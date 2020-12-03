@@ -32,7 +32,7 @@ echo "DB import starting"
 
 mysql --user=$newDB_user --password=$newDB_password -h $db_host -P $db_port $newDB_database  < $backupfileLocation
 echo "DB import complete"
-find "$backupLocation" -name db_backup_log_* -mtime +8 -exec rm {} \;
+unlink $backupfileLocation 
 echo "old files deleted" >> "$operationLogs"
 echo "operation finished at $(date +'%d-%m-%Y %H:%M:%S')" >> "$operationLogs"
 echo "*****************" >> "$operationLogs"
